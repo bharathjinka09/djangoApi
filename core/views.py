@@ -11,6 +11,11 @@ from rest_framework import generics
 from .serializers import PostSerializer
 from .models import Post
 
+'''
+Command to create token API key
+python manage.py drf_create_token admin
+'''
+
 class TestView(APIView):
 
 	permission_classes = [IsAuthenticated]
