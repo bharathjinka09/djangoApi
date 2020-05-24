@@ -16,6 +16,11 @@ Command to create token API key
 python manage.py drf_create_token admin
 '''
 
+def home(request):
+	posts = Post.objects.all()
+	context = {'posts':posts}
+	return render(request,'index.html',context=context)
+
 class TestView(APIView):
 
 	permission_classes = [IsAuthenticated]
