@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 # third party imports
@@ -20,6 +20,12 @@ def home(request):
 	posts = Post.objects.all()
 	context = {'posts':posts}
 	return render(request,'index.html',context=context)
+
+def create(request):
+	posts = Post.objects.all()
+	context = {'posts':posts}
+	return render(request,'create.html',context=context)
+
 
 class TestView(APIView):
 
@@ -59,6 +65,7 @@ class PostCreateView(mixins.ListModelMixin, generics.CreateAPIView):
 	def get(self, request, *args, **kwargs):
 		return self.list(request, *args, **kwargs)
 
+
 class PostListCreateView(generics.ListCreateAPIView):
 	serializer_class = PostSerializer
 	queryset = Post.objects.all()
@@ -70,3 +77,17 @@ class PostListCreateView(generics.ListCreateAPIView):
 class PostRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 	serializer_class = PostSerializer
 	queryset = Post.objects.all()
+
+# class DeletePostView(DestroyAPIView):
+#     serializer_class = PostSerializer
+#     permission_classes = [IsAuthenticated]
+
+#     def get_queryset(self):
+#         queryset = Posts.objects.filter(title = self.request.user, id=self.kwargs['pk'])
+#         return queryset
+
+#     def destroy(self, request, *args, **kwargs):
+#         instance = self.get_object()
+#         if instance.is_default == True:
+#             return Response("Cannot delete default system category", status=status.HTTP_400_BAD_REQUEST)
+#         self.perform_destroy(instance)

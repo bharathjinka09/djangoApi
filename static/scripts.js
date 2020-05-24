@@ -15,11 +15,11 @@ fetch('http://127.0.0.1:8000/posts/', {mode: 'cors'})
   		var row = `<tr>
   						<td>${posts[i].title}</td>
   						<td>${posts[i].description}</td>
-  						<td>${posts[i].owner}</td>
   						<td>${posts[i].timestamp}</td>
-
+  						<td><button class='btn btn-info' onclick="myFunction()">Edit</button></td>
+  						<td><a href='/delete/${i+1}' class='btn btn-danger'>Delete</a></td>
   				   </tr>`
-  		let title = posts[i].title;
+  		// let title = posts[i].title;
   		
   		table.innerHTML += row
 
