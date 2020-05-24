@@ -6,23 +6,24 @@ fetch('http://127.0.0.1:8000/posts/', {mode: 'cors'})
   // .then(posts => console.log(posts))
   .then(function(data) {
   	let posts = data;
-  	console.log(posts)
+  	console.log(posts);
 
-  	return posts.map(function (post) {
-  		
-  		let title = post.title;
-  		console.log(title);
-  		
-  		let description = post.description;
-  		console.log(description);
+  	var table = document.getElementById('myTable');
 
-  		// let timestamp = post.timestamp;
-  		// console.log(timestamp);
+  	for(var i = 0; i < posts.length; i++){
   		
-  		let owner = post.owner;
-  		console.log(owner);
- 
-  	})
+  		var row = `<tr>
+  						<td>${posts[i].title}</td>
+  						<td>${posts[i].description}</td>
+  						<td>${posts[i].owner}</td>
+  						<td>${posts[i].timestamp}</td>
+
+  				   </tr>`
+  		let title = posts[i].title;
+  		
+  		table.innerHTML += row
+
+  	}
   })
   .catch(error => console.log('Request failed', error))
 
