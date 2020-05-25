@@ -26,7 +26,7 @@ function delete_post($id) {
 
 
 
-fetch('http://127.0.0.1:8000/posts/', {mode: 'cors'})
+fetch('/posts/', {mode: 'cors'})
   .then((res) => res.json())
   // .then(posts => console.log(posts))
   .then(function(data) {
@@ -41,8 +41,8 @@ fetch('http://127.0.0.1:8000/posts/', {mode: 'cors'})
   						<td>${posts[i].title}</td>
   						<td>${posts[i].description}</td>
   						<td>${posts[i].timestamp}</td>
-  						<td><a href=http://127.0.0.1:8000/edit/${posts[i].id}><button class='btn btn-info'>Edit</button></a></td>
-  						<td><a href=http://127.0.0.1:8000/delete/${posts[i].id}><button class='btn btn-danger' onclick="delete_post(${posts[i].id})">Delete</button></a></td>
+  						<td><a href=/edit/${posts[i].id}><button class='btn btn-info'>Edit</button></a></td>
+  						<td><a href=/delete/${posts[i].id}><button class='btn btn-danger' onclick="delete_post(${posts[i].id})">Delete</button></a></td>
   				   </tr>`
   		// let title = posts[i].title;
   		
