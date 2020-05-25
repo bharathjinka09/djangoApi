@@ -78,16 +78,14 @@ class PostRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 	serializer_class = PostSerializer
 	queryset = Post.objects.all()
 
-# class DeletePostView(DestroyAPIView):
-#     serializer_class = PostSerializer
-#     permission_classes = [IsAuthenticated]
+class PostRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
+	serializer_class = PostSerializer
+	queryset = Post.objects.all()
 
-#     def get_queryset(self):
-#         queryset = Posts.objects.filter(title = self.request.user, id=self.kwargs['pk'])
-#         return queryset
+class PostRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
+	serializer_class = PostSerializer
+	queryset = Post.objects.all()
 
-#     def destroy(self, request, *args, **kwargs):
-#         instance = self.get_object()
-#         if instance.is_default == True:
-#             return Response("Cannot delete default system category", status=status.HTTP_400_BAD_REQUEST)
-#         self.perform_destroy(instance)
+class PostRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+	serializer_class = PostSerializer
+	queryset = Post.objects.all()
